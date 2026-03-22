@@ -4,7 +4,6 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://python.org)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-00FFFF?logo=yolo&logoColor=white)](https://docs.ultralytics.com)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![mAP@50](https://img.shields.io/badge/mAP%4050-95.9%25-brightgreen)]()
 
 ---
