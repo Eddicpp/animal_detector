@@ -1,0 +1,13 @@
+{
+  "branch_id": "branch_20260512_095451",
+  "project_id": "IRIS-3",
+  "base_version": "main-v1.0",
+  "change_request": "togliamo il pannello solare di destra",
+  "author": "user",
+  "created_at": "2026-05-12T09:54:51.149983",
+  "go_nogo_impact": "GO_WITH_CONSTRAINTS",
+  "confidence_before": 78,
+  "confidence_after": 78,
+  "issues_count": 4,
+  "missing_tests_count": 2
+}

@@ -1,0 +1,60 @@
+{
+  "change_summary": "The right solar panel has been removed.",
+  "geometry_changes": [
+    {
+      "operation": "remove",
+      "part_id": "solar_right",
+      "subsystem": "solar",
+      "description": "right solar panel removed"
+    }
+  ],
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "power",
+      "requirement": "L1-PWR-001",
+      "title": "Power margin reduction",
+      "description": "Removing the right solar panel reduces power generation capacity, potentially exceeding peak power consumption limits during imaging mode.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal stability impact",
+      "description": "Reduced power generation may affect thermal control, increasing the risk of exceeding \u0394T limits across orbital cycles.",
+      "type": "missing_test"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Structural balance alteration",
+      "description": "Removing the right solar panel alters the structural balance, potentially affecting mechanical stability and vibration response.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-31C",
+      "clause": "\u00a75.4",
+      "activity": "Thermal balance test to validate TMM with reduced solar panel configuration.",
+      "reason": "To verify thermal stability after removing the right solar panel."
+    }
+  ],
+  "affected_requirements": [
+    "L1-PWR-001",
+    "L1-THM-001"
+  ],
+  "affected_subsystems": [
+    "power",
+    "thermal",
+    "mechanical"
+  ],
+  "go_nogo_impact": "GO_WITH_CONSTRAINTS",
+  "confidence_delta": -25,
+  "managerial_summary": "Removing the right solar panel reduces power generation capacity, potentially impacting peak power consumption and thermal stability. This change requires additional testing to validate thermal control and mechanical balance. The overall system confidence is reduced due to these potential issues."
+}

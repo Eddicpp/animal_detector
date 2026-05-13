@@ -1,0 +1,60 @@
+{
+  "subsystems": {},
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "GO_WITH_CONSTRAINTS",
+  "confidence_before": 78,
+  "confidence_after": 78,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "solar",
+      "requirement": "L1-PWR-001",
+      "title": "Power generation reduced",
+      "description": "Removing the right solar panel reduces power generation capacity, potentially exceeding the power budget during imaging mode.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "structure",
+      "requirement": null,
+      "title": "Mass reduction below requirement",
+      "description": "Removing the right solar panel reduces total mass, potentially causing a margin above the required limit.",
+      "type": "missing_test"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": null,
+      "title": "Thermal balance affected",
+      "description": "Removing the right solar panel affects thermal distribution and may impact temperature stability across orbital cycles.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Structural integrity compromised",
+      "description": "Removing the right solar panel alters structural balance and may affect mechanical constraints such as vibration response.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "new_missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-10C \u00a75.3",
+      "clause": "\u00a75.3",
+      "activity": "Power generation re-evaluation after solar panel removal",
+      "reason": "To ensure power supply remains within budget post-change"
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-21C \u00a74.6",
+      "clause": "\u00a74.6",
+      "activity": "Structural integrity re-evaluation after solar panel removal",
+      "reason": "To ensure structural constraints are not violated post-change"
+    }
+  ],
+  "affected_requirements": []
+}

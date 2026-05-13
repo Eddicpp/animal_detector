@@ -1,0 +1,56 @@
+{
+  "subsystems": {},
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "GO_WITH_CONSTRAINTS",
+  "confidence_before": 78,
+  "confidence_after": 78,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "optical",
+      "requirement": "L1-OPT-001",
+      "title": "Loss of optical resolution requirement compliance",
+      "description": "Removing the telescope tube will eliminate the primary imaging capability, causing non-compliance with GSD \u2264 1.5m at nadir.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "critical",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal control system failure",
+      "description": "The thermal panel is removed, which will cause the optical bench temperature to exceed allowable \u0394T limits across orbital cycles.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "major",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Structural integrity compromised",
+      "description": "The removal of the optical subsystem will alter the structural balance and potentially affect mechanical constraints such as natural frequency and vibration response.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "major",
+      "subsystem": "startracker",
+      "requirement": null,
+      "title": "Star tracker alignment issues",
+      "description": "Without the optical subsystem, the star tracker's alignment and calibration will be compromised, affecting pointing accuracy.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-005",
+      "severity": "major",
+      "subsystem": "dataproc",
+      "requirement": null,
+      "title": "Data processing pipeline invalidation",
+      "description": "The removal of the optical subsystem will invalidate the data processing pipeline, which relies on image data from the telescope.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "new_missing_tests": [],
+  "affected_requirements": []
+}

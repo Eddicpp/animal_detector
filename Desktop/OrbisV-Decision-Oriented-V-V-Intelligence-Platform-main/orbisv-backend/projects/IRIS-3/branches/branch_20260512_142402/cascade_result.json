@@ -1,0 +1,60 @@
+{
+  "change_summary": "Remove the right solar panel",
+  "geometry_changes": [
+    {
+      "operation": "remove",
+      "part_id": "solar_right",
+      "subsystem": "solar",
+      "description": "right solar panel removed"
+    }
+  ],
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "power",
+      "requirement": "L1-PWR-001",
+      "title": "Power margin reduction",
+      "description": "Removing the right solar panel reduces power generation capacity, potentially exceeding peak power consumption limits during imaging mode.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "mass",
+      "requirement": "L1-MAS-001",
+      "title": "Mass margin increase",
+      "description": "Removing the right solar panel reduces total payload mass, increasing the mass margin but potentially affecting structural dynamics.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal margin impact",
+      "description": "Removing the right solar panel may affect thermal balance and stability, potentially impacting \u0394T across orbital cycles.",
+      "type": "missing_test"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-31C",
+      "clause": "\u00a75.4",
+      "activity": "Thermal balance test to validate TMM with right solar panel removed",
+      "reason": "To ensure thermal stability after removing the right solar panel"
+    }
+  ],
+  "affected_requirements": [
+    "L1-PWR-001",
+    "L1-MAS-001",
+    "L1-THM-001"
+  ],
+  "affected_subsystems": [
+    "power",
+    "mass",
+    "thermal"
+  ],
+  "go_nogo_impact": "major",
+  "notes": "The removal of the right solar panel requires additional thermal and power validation tests to ensure system stability."
+}

@@ -1,0 +1,85 @@
+{
+  "subsystems": {
+    "thermal": {
+      "before": {
+        "score": 61,
+        "status": "warn",
+        "detail": "\u0394T 14.8\u00b0C \u2014 margin < 5%",
+        "mass_kg": 3.1,
+        "volume_m3": 0.004
+      },
+      "after": {
+        "score": 53,
+        "status": "warn",
+        "detail": "Thermal stability impact",
+        "mass_kg": 3.1,
+        "volume_m3": 0.004
+      },
+      "score_delta": -8,
+      "status_changed": false
+    },
+    "mechanical": {
+      "before": {
+        "score": 88,
+        "status": "ok",
+        "detail": "1st mode 112 Hz > 80 Hz req",
+        "mass_kg": 12.4,
+        "volume_m3": 0.031
+      },
+      "after": {
+        "score": 80,
+        "status": "ok",
+        "detail": "Structural balance alteration",
+        "mass_kg": 12.4,
+        "volume_m3": 0.031
+      },
+      "score_delta": -8,
+      "status_changed": false
+    }
+  },
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "GO_WITH_CONSTRAINTS",
+  "confidence_before": 78,
+  "confidence_after": 53,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "power",
+      "requirement": "L1-PWR-001",
+      "title": "Power margin reduction",
+      "description": "Removing the right solar panel reduces power generation capacity, potentially exceeding peak power consumption limits during imaging mode.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal stability impact",
+      "description": "Reduced power generation may affect thermal control, increasing the risk of exceeding \u0394T limits across orbital cycles.",
+      "type": "missing_test"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Structural balance alteration",
+      "description": "Removing the right solar panel alters the structural balance, potentially affecting mechanical stability and vibration response.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "new_missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-31C",
+      "clause": "\u00a75.4",
+      "activity": "Thermal balance test to validate TMM with reduced solar panel configuration.",
+      "reason": "To verify thermal stability after removing the right solar panel."
+    }
+  ],
+  "affected_requirements": [
+    "L1-PWR-001",
+    "L1-THM-001"
+  ]
+}

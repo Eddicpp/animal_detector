@@ -1,0 +1,110 @@
+{
+  "change_summary": "Remove the optical subsystem (telescope)",
+  "geometry_changes": [
+    {
+      "operation": "remove",
+      "part_id": "optical_tube",
+      "subsystem": "optical",
+      "description": "Optical telescope tube removed"
+    },
+    {
+      "operation": "remove",
+      "part_id": "thermal_panel",
+      "subsystem": "thermal",
+      "description": "Thermal control panel removed"
+    }
+  ],
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "optical",
+      "requirement": "L1-OPT-001",
+      "title": "Loss of optical resolution requirement compliance",
+      "description": "Removing the telescope tube will eliminate the primary imaging capability, violating the GSD \u2264 1.5m at nadir requirement.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "critical",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal control system failure",
+      "description": "The thermal panel is removed, which will cause the optical bench temperature to exceed allowable \u0394T limits across orbital cycles.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "major",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Structural integrity compromised",
+      "description": "The removal of the optical subsystem will alter the structural balance and potentially reduce the first natural frequency below the required 80 Hz.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "major",
+      "subsystem": "startracker",
+      "requirement": null,
+      "title": "Star tracker alignment issues",
+      "description": "Without the optical subsystem, the star tracker may lose its reference point for accurate pointing and attitude determination.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-005",
+      "severity": "minor",
+      "subsystem": "dataproc",
+      "requirement": null,
+      "title": "Data processing pipeline invalidation",
+      "description": "The data processing algorithms will no longer have valid input from the optical subsystem, rendering them obsolete.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "V&V_evidence_impact": [
+    {
+      "evidence_id": "SIM-OPT-001",
+      "requirement": "L1-OPT-001",
+      "impact": "Invalidated",
+      "description": "Simulation results for optical resolution are no longer applicable."
+    },
+    {
+      "evidence_id": "TST-OPT-001",
+      "requirement": "L1-OPT-001",
+      "impact": "Invalidated",
+      "description": "Test results for optical resolution are no longer valid."
+    }
+  ],
+  "open_NCR_impact": [
+    {
+      "NCR_id": "NCR-2024-031",
+      "requirement": "L1-THM-001",
+      "impact": "Invalidated",
+      "description": "Thermal gradient analysis is no longer relevant without the optical subsystem."
+    }
+  ],
+  "ECSS_validation_items_impact": [
+    {
+      "validation_id": "THM-V-002",
+      "activity": "Thermal vacuum test at qualification margins (4 cycles min)",
+      "impact": "Invalidated",
+      "description": "Thermal testing is no longer applicable without the optical subsystem."
+    }
+  ],
+  "system_constraints_impact": [
+    {
+      "constraint_type": "Mass budget",
+      "current_value": 34.2,
+      "new_value": 31.5,
+      "margin_change": -2.7,
+      "description": "Reduction in mass due to removal of optical subsystem."
+    },
+    {
+      "constraint_type": "Power budget imaging",
+      "current_value": 162,
+      "new_value": 0,
+      "margin_change": -162,
+      "description": "No power consumption from the optical subsystem."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "subsystems": {},
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "GO_WITH_CONSTRAINTS",
+  "confidence_before": 78,
+  "confidence_after": 78,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "structure",
+      "requirement": "L1-MEC-002",
+      "title": "Structural integrity compromised by material change",
+      "description": "Marble is significantly less dense and structurally weaker than the original material, leading to potential failure under launch loads.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "major",
+      "subsystem": "mechanical",
+      "requirement": "L1-MEC-003",
+      "title": "Shock test required due to material change",
+      "description": "The new material may not withstand the shock loads specified in the launcher SRS ICD, necessitating a retest.",
+      "type": "ncr_required"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal performance degradation due to material change",
+      "description": "Marble has different thermal properties, potentially increasing the \u0394T across orbital cycles and violating the temperature stability requirement.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "minor",
+      "subsystem": "power",
+      "requirement": "L1-PWR-002",
+      "title": "Increased power consumption due to material change",
+      "description": "The thermal properties of marble may require additional heaters or cooling systems, increasing the average power consumption.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "new_missing_tests": [],
+  "affected_requirements": []
+}

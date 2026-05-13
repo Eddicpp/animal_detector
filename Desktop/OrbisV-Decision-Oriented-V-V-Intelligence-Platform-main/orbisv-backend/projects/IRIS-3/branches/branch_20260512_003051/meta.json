@@ -1,0 +1,13 @@
+{
+  "branch_id": "branch_20260512_003051",
+  "project_id": "IRIS-3",
+  "base_version": "main-v1.0",
+  "change_request": "vorrei ingrandire la struttura arrivando a farla pesare 36kg\n",
+  "author": "user",
+  "created_at": "2026-05-12T00:30:51.494601",
+  "go_nogo_impact": "NO_GO",
+  "confidence_before": 78,
+  "confidence_after": 53,
+  "issues_count": 3,
+  "missing_tests_count": 1
+}

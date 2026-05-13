@@ -1,0 +1,60 @@
+{
+  "change_summary": "Structure height increased 40% downward to accommodate a larger battery pack",
+  "geometry_changes": [
+    {
+      "subsystem": "structure",
+      "dimension": "height",
+      "scale_factor": 1.4,
+      "direction": "down",
+      "description": "structure height increased 40% downward"
+    }
+  ],
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal Gradient Exceeds Limit",
+      "description": "Increasing the structure height by 40% downward will likely increase thermal gradients across the optical bench, potentially exceeding the \u0394T \u2264 15\u00b0C requirement.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "major",
+      "subsystem": "mechanical",
+      "requirement": "L1-MEC-003",
+      "title": "Shock Test Required for New Geometry",
+      "description": "The change in structure geometry necessitates a new shock test to ensure compliance with the launcher SRS ICD.",
+      "type": "missing_test"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "structure",
+      "requirement": null,
+      "title": "Volume Envelope Exceeded",
+      "description": "The increase in structure height may cause the payload volume to exceed the platform accommodation envelope of 0.10 m\u00b3.",
+      "type": "constraint_violation"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD",
+      "reason": "The change in structure geometry requires revalidation of shock response."
+    }
+  ],
+  "affected_requirements": [
+    "L1-THM-001",
+    "L1-MEC-003"
+  ],
+  "affected_subsystems": [
+    "thermal",
+    "mechanical",
+    "structure"
+  ],
+  "go_nogo_impact": "NO_GO",
+  "confidence_delta": -25
+}

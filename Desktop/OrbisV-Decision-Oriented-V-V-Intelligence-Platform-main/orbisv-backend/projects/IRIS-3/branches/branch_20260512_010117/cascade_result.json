@@ -1,0 +1,66 @@
+{
+  "change_summary": "Deletion of one solar panel",
+  "geometry_changes": [
+    {
+      "subsystem": "solar",
+      "dimension": "all",
+      "scale_factor": 0.0,
+      "direction": "uniform",
+      "description": "One solar panel completely removed"
+    }
+  ],
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "solar",
+      "requirement": "L1-PWR-002",
+      "title": "Power generation reduction",
+      "description": "Removing one solar panel reduces the total power generation capacity, potentially exceeding the average power consumption during eclipse and peak imaging mode requirements.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "major",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Structural balance disruption",
+      "description": "The removal of one solar panel disrupts the structural balance and symmetry, potentially affecting the payload's dynamic response to launch vibrations.",
+      "type": "missing_test"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": null,
+      "title": "Thermal imbalance",
+      "description": "The removal of one solar panel may cause thermal imbalances, affecting the temperature stability and control across orbital cycles.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test to validate structural integrity after solar panel removal",
+      "reason": "The change affects the mechanical subsystem's balance and requires revalidation of shock response."
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-31C",
+      "clause": "\u00a75.4",
+      "activity": "Thermal balance test to validate thermal stability after solar panel removal",
+      "reason": "The change may introduce thermal imbalances that need verification through a new thermal balance test."
+    }
+  ],
+  "affected_requirements": [
+    "L1-PWR-002",
+    "L1-MEC-003"
+  ],
+  "affected_subsystems": [
+    "solar",
+    "mechanical",
+    "thermal"
+  ],
+  "go_nogo_impact": "NO_GO",
+  "confidence_delta": -45
+}

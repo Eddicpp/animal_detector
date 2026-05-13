@@ -1,0 +1,108 @@
+{
+  "subsystems": {
+    "thermal": {
+      "before": {
+        "score": 61,
+        "status": "warn",
+        "detail": "\u0394T 14.8\u00b0C \u2014 margin < 5%",
+        "mass_kg": 3.1,
+        "volume_m3": 0.004
+      },
+      "after": {
+        "score": 53,
+        "status": "warn",
+        "detail": "Thermal balance disrupted",
+        "mass_kg": 3.1,
+        "volume_m3": 0.004
+      },
+      "score_delta": -8,
+      "status_changed": false
+    },
+    "mechanical": {
+      "before": {
+        "score": 88,
+        "status": "ok",
+        "detail": "1st mode 112 Hz > 80 Hz req",
+        "mass_kg": 12.4,
+        "volume_m3": 0.031
+      },
+      "after": {
+        "score": 80,
+        "status": "ok",
+        "detail": "Structural balance altered",
+        "mass_kg": 12.4,
+        "volume_m3": 0.031
+      },
+      "score_delta": -8,
+      "status_changed": false
+    },
+    "solar": {
+      "before": {
+        "score": 89,
+        "status": "ok",
+        "detail": "Power margin +18%",
+        "mass_kg": 1.8,
+        "volume_m3": 0.006
+      },
+      "after": {
+        "score": 69,
+        "status": "warn",
+        "detail": "Power generation reduced",
+        "mass_kg": 1.8,
+        "volume_m3": 0.006
+      },
+      "score_delta": -20,
+      "status_changed": true
+    }
+  },
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "GO_WITH_CONSTRAINTS",
+  "confidence_before": 78,
+  "confidence_after": 53,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "solar",
+      "requirement": "L1-PWR-001",
+      "title": "Power generation reduced",
+      "description": "Removing the right solar panel reduces power generation capacity, potentially violating the peak power requirement during imaging mode.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Structural balance altered",
+      "description": "The removal of the right solar panel may alter the structural balance and center of mass, potentially affecting mechanical stability during launch.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": null,
+      "title": "Thermal balance disrupted",
+      "description": "The removal of the right solar panel may disrupt thermal balance, affecting temperature control and stability across orbital cycles.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "new_missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test to validate structural integrity after solar panel removal",
+      "reason": "The change may affect the shock response of the payload."
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-31C",
+      "clause": "\u00a75.4",
+      "activity": "Thermal balance test to assess thermal stability post-change",
+      "reason": "Removing a solar panel can impact thermal control and stability."
+    }
+  ],
+  "affected_requirements": [
+    "L1-PWR-001"
+  ]
+}

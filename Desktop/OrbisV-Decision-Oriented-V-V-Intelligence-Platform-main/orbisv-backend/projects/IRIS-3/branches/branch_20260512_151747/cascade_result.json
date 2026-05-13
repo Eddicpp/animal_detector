@@ -1,0 +1,58 @@
+{
+  "change_summary": "Change the structure material to marble while maintaining dimensions",
+  "geometry_changes": [
+    {
+      "operation": "scale",
+      "part_id": "structure_body",
+      "subsystem": "structure",
+      "dimension": "all",
+      "scale_factor": 1.0,
+      "direction": "uniform",
+      "description": "Structure maintained at original dimensions"
+    }
+  ],
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "structure",
+      "requirement": "L1-MAS-001",
+      "title": "Mass budget violation due to marble material",
+      "description": "Marble is significantly heavier than the original structural material, causing mass budget overruns and violating L1-MAS-001 requirement.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "major",
+      "subsystem": "mechanical",
+      "requirement": "L1-MEC-003",
+      "title": "Shock test required due to material change",
+      "description": "The use of marble as a structural material necessitates retesting for shock response, which is currently pending (NCR-2024-041).",
+      "type": "missing_test"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": null,
+      "title": "Thermal conductivity impact on \u0394T",
+      "description": "Marble has different thermal properties compared to the original material, potentially affecting thermal gradients and violating L1-THM-001 requirement.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD",
+      "reason": "Material change requires retesting for shock response."
+    }
+  ],
+  "affected_requirements": [
+    "L1-MAS-001",
+    "L1-THM-001"
+  ],
+  "affected_non_conformance_reports": [
+    "NCR-2024-041"
+  ]
+}

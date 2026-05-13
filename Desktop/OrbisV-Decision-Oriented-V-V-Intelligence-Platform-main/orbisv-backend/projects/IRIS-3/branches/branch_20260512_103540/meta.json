@@ -1,0 +1,13 @@
+{
+  "branch_id": "branch_20260512_103540",
+  "project_id": "IRIS-3",
+  "base_version": "main-v1.0",
+  "change_request": "togliamo la telecamera",
+  "author": "user",
+  "created_at": "2026-05-12T10:35:40.803209",
+  "go_nogo_impact": "GO_WITH_CONSTRAINTS",
+  "confidence_before": 78,
+  "confidence_after": 78,
+  "issues_count": 5,
+  "missing_tests_count": 0
+}

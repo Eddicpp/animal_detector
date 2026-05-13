@@ -1,0 +1,51 @@
+{
+  "change_summary": "Increase the mass of the structure to 36 kg",
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "structure",
+      "requirement": "L1-MAS-001",
+      "title": "Mass constraint violation",
+      "description": "The total mass of the payload exceeds the platform accommodation envelope by 1 kg, violating the requirement L1-MAS-001.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "major",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal margin reduction",
+      "description": "Increasing the mass of the structure may alter thermal properties and reduce the \u0394T margin, potentially violating L1-THM-001.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Potential structural integrity impact",
+      "description": "Increasing the mass of the structure may affect its structural integrity and natural frequencies, requiring reanalysis.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD",
+      "reason": "The change may affect the structural dynamics, necessitating a reevaluation of shock response."
+    }
+  ],
+  "affected_requirements": [
+    "L1-MAS-001",
+    "L1-THM-001"
+  ],
+  "affected_subsystems": [
+    "structure",
+    "thermal",
+    "mechanical"
+  ],
+  "go_nogo_impact": "NO_GO",
+  "confidence_delta": -25
+}

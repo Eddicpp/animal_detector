@@ -1,0 +1,74 @@
+{
+  "change_summary": "Right solar panel removed",
+  "geometry_changes": [
+    {
+      "operation": "remove",
+      "part_id": "solar_right",
+      "subsystem": "solar",
+      "description": "right solar panel removed"
+    }
+  ],
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "solar",
+      "requirement": "L1-PWR-001",
+      "title": "Power generation reduced",
+      "description": "Removing the right solar panel reduces power generation capacity, potentially exceeding the power budget during imaging mode.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "structure",
+      "requirement": null,
+      "title": "Mass reduction below requirement",
+      "description": "Removing the right solar panel reduces total mass, potentially causing a margin above the required limit.",
+      "type": "missing_test"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": null,
+      "title": "Thermal balance affected",
+      "description": "Removing the right solar panel affects thermal distribution and may impact temperature stability across orbital cycles.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Structural integrity compromised",
+      "description": "Removing the right solar panel alters structural balance and may affect mechanical constraints such as vibration response.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-10-03",
+      "clause": "\u00a75.2",
+      "activity": "Redesign and retest power generation capacity",
+      "reason": "Power generation is reduced, requiring a new test to ensure compliance with the power budget."
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-10-03",
+      "clause": "\u00a75.4",
+      "activity": "Redesign and retest thermal balance",
+      "reason": "Thermal distribution is altered, requiring a new test to ensure compliance with temperature stability requirements."
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-10-03",
+      "clause": "\u00a75.6",
+      "activity": "Redesign and retest structural integrity",
+      "reason": "Structural balance is altered, requiring a new test to ensure compliance with mechanical constraints."
+    }
+  ],
+  "TOTAL": {
+    "mass_budget": "34.2 kg - 1.8 kg = 32.4 kg | Margin: 2.6 kg",
+    "power_budget_imaging": "Current peak power generation reduced, margin recalculated.",
+    "thermal_delta_t_limit": "Thermal balance affected, margin recalculated."
+  }
+}

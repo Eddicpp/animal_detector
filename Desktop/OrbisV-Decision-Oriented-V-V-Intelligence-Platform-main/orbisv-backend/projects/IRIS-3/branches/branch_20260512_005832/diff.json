@@ -1,0 +1,103 @@
+{
+  "subsystems": {
+    "thermal": {
+      "before": {
+        "score": 61,
+        "status": "warn",
+        "detail": "\u0394T 14.8\u00b0C \u2014 margin < 5%",
+        "mass_kg": 3.1,
+        "volume_m3": 0.004
+      },
+      "after": {
+        "score": 26,
+        "status": "fail",
+        "detail": "Thermal Gradient Exceeds Limit",
+        "mass_kg": 3.1,
+        "volume_m3": 0.004
+      },
+      "score_delta": -35,
+      "status_changed": true
+    },
+    "mechanical": {
+      "before": {
+        "score": 88,
+        "status": "ok",
+        "detail": "1st mode 112 Hz > 80 Hz req",
+        "mass_kg": 12.4,
+        "volume_m3": 0.031
+      },
+      "after": {
+        "score": 68,
+        "status": "warn",
+        "detail": "Shock Test Required for New Geometry",
+        "mass_kg": 12.4,
+        "volume_m3": 0.031
+      },
+      "score_delta": -20,
+      "status_changed": true
+    },
+    "structure": {
+      "before": {
+        "score": 91,
+        "status": "ok",
+        "detail": "Mass 33.8 kg / budget 35 kg",
+        "mass_kg": 6.8,
+        "volume_m3": 0.022
+      },
+      "after": {
+        "score": 83,
+        "status": "ok",
+        "detail": "Volume Envelope Exceeded",
+        "mass_kg": 6.8,
+        "volume_m3": 0.022
+      },
+      "score_delta": -8,
+      "status_changed": false
+    }
+  },
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "NO_GO",
+  "confidence_before": 78,
+  "confidence_after": 53,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal Gradient Exceeds Limit",
+      "description": "Increasing the structure height by 40% downward will likely increase thermal gradients across the optical bench, potentially exceeding the \u0394T \u2264 15\u00b0C requirement.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "major",
+      "subsystem": "mechanical",
+      "requirement": "L1-MEC-003",
+      "title": "Shock Test Required for New Geometry",
+      "description": "The change in structure geometry necessitates a new shock test to ensure compliance with the launcher SRS ICD.",
+      "type": "missing_test"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "structure",
+      "requirement": null,
+      "title": "Volume Envelope Exceeded",
+      "description": "The increase in structure height may cause the payload volume to exceed the platform accommodation envelope of 0.10 m\u00b3.",
+      "type": "constraint_violation"
+    }
+  ],
+  "new_missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD",
+      "reason": "The change in structure geometry requires revalidation of shock response."
+    }
+  ],
+  "affected_requirements": [
+    "L1-THM-001",
+    "L1-MEC-003"
+  ]
+}

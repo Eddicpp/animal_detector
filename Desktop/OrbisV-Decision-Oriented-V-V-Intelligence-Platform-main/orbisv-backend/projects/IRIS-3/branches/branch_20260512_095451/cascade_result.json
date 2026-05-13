@@ -1,0 +1,145 @@
+{
+  "change_summary": "Right solar panel removed",
+  "geometry_changes": [
+    {
+      "operation": "remove",
+      "part_id": "solar_right",
+      "subsystem": "solar",
+      "description": "right solar panel removed"
+    }
+  ],
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "power",
+      "requirement": "L1-PWR-001",
+      "title": "Power margin reduction",
+      "description": "Removing the right solar panel reduces power generation capacity, potentially exceeding peak power consumption limits during imaging mode.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal margin reduction",
+      "description": "The removal of the right solar panel may affect thermal balance and stability, potentially increasing \u0394T on the optical bench.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "structure",
+      "requirement": null,
+      "title": "Structural balance alteration",
+      "description": "The removal of the right solar panel alters the structural balance and may affect dynamic response during launch vibration.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Mechanical stress redistribution",
+      "description": "The removal of the right solar panel may redistribute mechanical stresses, potentially affecting structural integrity.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1 \u00a79",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD",
+      "reason": "The change may affect shock response, necessitating revalidation."
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-40C \u00a75.3",
+      "clause": "\u00a75.3",
+      "activity": "On-board compression algorithm validation",
+      "reason": "Power margin reduction may impact data processing efficiency and power consumption."
+    }
+  ],
+  "open_non_conformance_reports": [
+    {
+      "id": "NCR-2024-031",
+      "severity": "MAJOR",
+      "requirement": "L1-THM-001",
+      "owner": "Thermal team",
+      "opened_date": "2024-11-15"
+    },
+    {
+      "id": "NCR-2024-038",
+      "severity": "MINOR",
+      "requirement": "L1-DPR-001",
+      "owner": "Data processing team",
+      "opened_date": "2024-11-12"
+    },
+    {
+      "id": "NCR-2024-041",
+      "severity": "MAJOR",
+      "requirement": "L1-MEC-003",
+      "owner": "AIT team",
+      "opened_date": "2024-12-02"
+    }
+  ],
+  "ecss_open_validation_items": [
+    {
+      "id": "THM-V-001",
+      "activity": "Thermal balance test to validate TMM",
+      "status": "OPEN"
+    },
+    {
+      "id": "THM-V-002",
+      "activity": "Thermal vacuum test at qualification margins (4 cycles min)",
+      "status": "OPEN"
+    },
+    {
+      "id": "MEC-V-004",
+      "activity": "Shock test per launcher SRS ICD",
+      "status": "OPEN"
+    },
+    {
+      "id": "STR-V-003",
+      "activity": "Acoustic test at qualification level +3dB",
+      "status": "PENDING"
+    },
+    {
+      "id": "DPR-V-001",
+      "activity": "On-board compression algorithm validation",
+      "status": "OPEN"
+    }
+  ],
+  "system_constraints": [
+    {
+      "constraint_type": "mass_budget",
+      "current_value": 34.2,
+      "budget_value": 35.0,
+      "margin": 0.8
+    },
+    {
+      "constraint_type": "power_budget_imaging",
+      "current_value": 162,
+      "budget_value": 180,
+      "margin": 18
+    },
+    {
+      "constraint_type": "thermal_delta_t_limit",
+      "current_value": 14.8,
+      "limit_value": 15,
+      "margin": 0.2
+    },
+    {
+      "constraint_type": "first_natural_frequency",
+      "current_value": 108,
+      "minimum_value": 80,
+      "margin": 28
+    },
+    {
+      "constraint_type": "volume_envelope",
+      "current_value": 0.084,
+      "maximum_value": 0.1,
+      "margin": 0.016
+    }
+  ]
+}

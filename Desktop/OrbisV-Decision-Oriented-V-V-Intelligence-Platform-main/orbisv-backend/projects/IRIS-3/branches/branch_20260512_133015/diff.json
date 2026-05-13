@@ -1,0 +1,56 @@
+{
+  "subsystems": {},
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "GO_WITH_CONSTRAINTS",
+  "confidence_before": 78,
+  "confidence_after": 78,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal Gradient Exceeds Limit",
+      "description": "Marble has a higher thermal conductivity than typical materials used in spacecraft, which could increase the thermal gradient across the optical bench beyond the 15\u00b0C limit.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "major",
+      "subsystem": "mechanical",
+      "requirement": "L1-MEC-003",
+      "title": "Shock Test Required",
+      "description": "Marble is brittle and may not withstand the shock loads during launch, necessitating a new shock test to validate its structural integrity.",
+      "type": "missing_test"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "structure",
+      "requirement": null,
+      "title": "Mass Increase",
+      "description": "Marble is denser than typical spacecraft materials, leading to an increase in the total mass of the payload. This could violate the 35 kg mass budget.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "minor",
+      "subsystem": "solar",
+      "requirement": null,
+      "title": "Solar Panel Mounting Issues",
+      "description": "Marble may not provide adequate mounting points or structural support for the solar panels, potentially affecting their deployment and alignment.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-005",
+      "severity": "minor",
+      "subsystem": "startracker",
+      "requirement": null,
+      "title": "Stray Light Concerns",
+      "description": "Marble's reflective properties could introduce stray light into the star tracker, affecting its performance and accuracy.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "new_missing_tests": [],
+  "affected_requirements": []
+}

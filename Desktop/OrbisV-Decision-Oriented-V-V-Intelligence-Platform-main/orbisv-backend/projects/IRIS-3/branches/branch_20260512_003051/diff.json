@@ -1,0 +1,103 @@
+{
+  "subsystems": {
+    "thermal": {
+      "before": {
+        "score": 61,
+        "status": "warn",
+        "detail": "\u0394T 14.8\u00b0C \u2014 margin < 5%",
+        "mass_kg": 3.1,
+        "volume_m3": 0.004
+      },
+      "after": {
+        "score": 41,
+        "status": "warn",
+        "detail": "Thermal margin reduction",
+        "mass_kg": 3.1,
+        "volume_m3": 0.004
+      },
+      "score_delta": -20,
+      "status_changed": false
+    },
+    "mechanical": {
+      "before": {
+        "score": 88,
+        "status": "ok",
+        "detail": "1st mode 112 Hz > 80 Hz req",
+        "mass_kg": 12.4,
+        "volume_m3": 0.031
+      },
+      "after": {
+        "score": 80,
+        "status": "ok",
+        "detail": "Potential structural integrity impact",
+        "mass_kg": 12.4,
+        "volume_m3": 0.031
+      },
+      "score_delta": -8,
+      "status_changed": false
+    },
+    "structure": {
+      "before": {
+        "score": 91,
+        "status": "ok",
+        "detail": "Mass 33.8 kg / budget 35 kg",
+        "mass_kg": 6.8,
+        "volume_m3": 0.022
+      },
+      "after": {
+        "score": 56,
+        "status": "fail",
+        "detail": "Mass constraint violation",
+        "mass_kg": 6.8,
+        "volume_m3": 0.022
+      },
+      "score_delta": -35,
+      "status_changed": true
+    }
+  },
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "NO_GO",
+  "confidence_before": 78,
+  "confidence_after": 53,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "structure",
+      "requirement": "L1-MAS-001",
+      "title": "Mass constraint violation",
+      "description": "The total mass of the payload exceeds the platform accommodation envelope by 1 kg, violating the requirement L1-MAS-001.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "major",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal margin reduction",
+      "description": "Increasing the mass of the structure may alter thermal properties and reduce the \u0394T margin, potentially violating L1-THM-001.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Potential structural integrity impact",
+      "description": "Increasing the mass of the structure may affect its structural integrity and natural frequencies, requiring reanalysis.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "new_missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD",
+      "reason": "The change may affect the structural dynamics, necessitating a reevaluation of shock response."
+    }
+  ],
+  "affected_requirements": [
+    "L1-MAS-001",
+    "L1-THM-001"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "subsystems": {},
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "GO_WITH_CONSTRAINTS",
+  "confidence_before": 78,
+  "confidence_after": 78,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "power",
+      "requirement": "L1-PWR-001",
+      "title": "Power margin reduction",
+      "description": "Removing the right solar panel reduces power generation capacity, potentially exceeding peak power consumption limits during imaging mode.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal margin reduction",
+      "description": "The removal of the right solar panel may affect thermal balance and stability, potentially increasing \u0394T on the optical bench.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "structure",
+      "requirement": null,
+      "title": "Structural balance alteration",
+      "description": "The removal of the right solar panel alters the structural balance and may affect dynamic response during launch vibration.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Mechanical stress redistribution",
+      "description": "The removal of the right solar panel may redistribute mechanical stresses, potentially affecting structural integrity.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "new_missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1 \u00a79",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD",
+      "reason": "The change may affect shock response, necessitating revalidation."
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-40C \u00a75.3",
+      "clause": "\u00a75.3",
+      "activity": "On-board compression algorithm validation",
+      "reason": "Power margin reduction may impact data processing efficiency and power consumption."
+    }
+  ],
+  "affected_requirements": []
+}

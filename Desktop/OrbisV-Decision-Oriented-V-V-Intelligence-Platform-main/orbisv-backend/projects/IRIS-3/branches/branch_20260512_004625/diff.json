@@ -1,0 +1,119 @@
+{
+  "subsystems": {
+    "thermal": {
+      "before": {
+        "score": 61,
+        "status": "warn",
+        "detail": "\u0394T 14.8\u00b0C \u2014 margin < 5%",
+        "mass_kg": 3.1,
+        "volume_m3": 0.004
+      },
+      "after": {
+        "score": 41,
+        "status": "warn",
+        "detail": "Thermal gradient margin may decrease",
+        "mass_kg": 3.1,
+        "volume_m3": 0.004
+      },
+      "score_delta": -20,
+      "status_changed": false
+    },
+    "mechanical": {
+      "before": {
+        "score": 88,
+        "status": "ok",
+        "detail": "1st mode 112 Hz > 80 Hz req",
+        "mass_kg": 12.4,
+        "volume_m3": 0.031
+      },
+      "after": {
+        "score": 53,
+        "status": "fail",
+        "detail": "Increased structural length may exceed vibration test limits",
+        "mass_kg": 12.4,
+        "volume_m3": 0.031
+      },
+      "score_delta": -35,
+      "status_changed": true
+    },
+    "structure": {
+      "before": {
+        "score": 91,
+        "status": "ok",
+        "detail": "Mass 33.8 kg / budget 35 kg",
+        "mass_kg": 6.8,
+        "volume_m3": 0.022
+      },
+      "after": {
+        "score": 83,
+        "status": "ok",
+        "detail": "Total mass may exceed accommodation envelope",
+        "mass_kg": 6.8,
+        "volume_m3": 0.022
+      },
+      "score_delta": -8,
+      "status_changed": false
+    }
+  },
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "NO_GO",
+  "confidence_before": 78,
+  "confidence_after": 43,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "mechanical",
+      "requirement": "L1-MEC-002",
+      "title": "Increased structural length may exceed vibration test limits",
+      "description": "The change in dimensions could alter the modal frequencies and natural modes of vibration, potentially causing the structure to fail the random vibration test at 14.1 Grms.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "major",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal gradient margin may decrease",
+      "description": "Increasing the length of the base structure can increase thermal gradients across the optical bench, potentially violating the requirement for a maximum \u0394T of 15\u00b0C during orbital cycles.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "structure",
+      "requirement": "L1-MAS-001",
+      "title": "Total mass may exceed accommodation envelope",
+      "description": "The change in dimensions could increase the overall mass of the payload, potentially exceeding the 35 kg limit.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": "L1-MEC-003",
+      "title": "Shock test may need re-evaluation",
+      "description": "The change in dimensions could affect the shock response characteristics, necessitating a reanalysis of the structure's ability to withstand launch shock loads.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "new_missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD",
+      "reason": "The change in dimensions may affect the shock response characteristics, necessitating a re-evaluation of the structure's ability to withstand launch shock loads."
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-31C",
+      "clause": "\u00a75.4",
+      "activity": "Thermal balance test to validate TMM",
+      "reason": "The change in dimensions may alter thermal gradients and heat dissipation, requiring a new thermal balance test."
+    }
+  ],
+  "affected_requirements": [
+    "L1-MEC-002",
+    "L1-THM-001",
+    "L1-MAS-001"
+  ]
+}

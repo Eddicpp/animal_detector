@@ -1,0 +1,68 @@
+{
+  "change_summary": "Right solar panel removed",
+  "geometry_changes": [
+    {
+      "operation": "remove",
+      "part_id": "solar_right",
+      "subsystem": "solar",
+      "description": "right solar panel removed"
+    }
+  ],
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "solar",
+      "requirement": "L1-PWR-001",
+      "title": "Power generation reduced",
+      "description": "Removing the right solar panel reduces power generation capacity, potentially exceeding the power budget during imaging mode.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Structural balance altered",
+      "description": "Removing the right solar panel alters the structural balance and could affect mechanical stability during launch vibration.",
+      "type": "missing_test"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": null,
+      "title": "Thermal imbalance risk",
+      "description": "Removing the right solar panel may introduce thermal imbalances, affecting temperature control and stability.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-10-03",
+      "clause": "\u00a79.2",
+      "activity": "Random vibration test with modified solar panel configuration",
+      "reason": "To verify the structural integrity and stability after removing the right solar panel."
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-10-03",
+      "clause": "\u00a79.4",
+      "activity": "Thermal vacuum test with modified thermal configuration",
+      "reason": "To assess the impact on thermal stability and ensure \u0394T remains within acceptable limits."
+    }
+  ],
+  "affected_requirements": [
+    "L1-PWR-001"
+  ],
+  "affected_subsystems": [
+    "solar",
+    "mechanical",
+    "thermal"
+  ],
+  "system_constraints": {
+    "mass_budget": "No change",
+    "power_budget_imaging": "Reduced power generation capacity",
+    "thermal_delta_t_limit": "Potential thermal imbalance risk",
+    "first_natural_frequency": "No direct impact"
+  }
+}

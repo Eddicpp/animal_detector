@@ -1,0 +1,60 @@
+{
+  "change_summary": "Increase optical bench volume and mass due to new lens assembly",
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "optical",
+      "requirement": "L1-MAS-001",
+      "title": "Mass constraint violation for optical subsystem",
+      "description": "The increase in mass from 8.2 kg to 9.4 kg exceeds the total payload mass requirement of \u226435 kg, reducing margin.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "structure",
+      "requirement": null,
+      "title": "Potential impact on structural subsystem mass budget",
+      "description": "The additional 1.2 kg in the optical subsystem may require adjustments to the structure subsystem's mass allocation, potentially affecting its compliance with the total payload mass requirement.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": null,
+      "title": "Potential impact on thermal subsystem volume and heat dissipation",
+      "description": "The increase in optical bench volume may affect the thermal subsystem's ability to manage heat dissipation within the reduced volume envelope, potentially impacting \u0394T compliance.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "minor",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Potential impact on mechanical subsystem volume constraints",
+      "description": "The increase in optical bench volume may violate the platform's ICD-defined maximum volume of 0.10 m\u00b3, requiring reevaluation.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD",
+      "reason": "The new lens assembly may require additional shock testing to ensure it can withstand launch vibration and shock loads."
+    }
+  ],
+  "affected_requirements": [
+    "L1-MAS-001"
+  ],
+  "affected_subsystems": [
+    "optical",
+    "structure",
+    "thermal",
+    "mechanical"
+  ],
+  "go_nogo_impact": "GO_WITH_CONSTRAINTS",
+  "confidence_delta": -25
+}

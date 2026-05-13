@@ -1,0 +1,66 @@
+{
+  "change_summary": "Change payload mass from 33.8 kg to 36 kg",
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "structure",
+      "requirement": "L1-MAS-001",
+      "title": "Mass exceeds accommodation envelope",
+      "description": "The proposed mass increase from 33.8 kg to 36 kg violates the platform's accommodation envelope of 35 kg, leading to potential structural and thermal issues.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "major",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Potential impact on mechanical subsystems",
+      "description": "Increasing the payload mass may affect the structural integrity and vibration characteristics of the mechanical subsystem, potentially requiring reanalysis or additional testing.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "major",
+      "subsystem": "thermal",
+      "requirement": null,
+      "title": "Thermal management constraints",
+      "description": "The increased mass may affect thermal dissipation and heat distribution, potentially impacting the thermal subsystem's ability to maintain temperature stability.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "minor",
+      "subsystem": "power",
+      "requirement": null,
+      "title": "Power consumption considerations",
+      "description": "The additional mass may require more power for operation, potentially impacting the power subsystem's ability to meet the required power budget.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD",
+      "reason": "The proposed mass increase may necessitate re-evaluation of shock response and additional testing to ensure compliance with the launcher's structural requirements."
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-31C",
+      "clause": "\u00a75.4",
+      "activity": "Thermal balance test to validate TMM",
+      "reason": "The increased mass may affect thermal management, requiring a re-evaluation of the thermal model and additional testing."
+    }
+  ],
+  "affected_requirements": [
+    "L1-MAS-001"
+  ],
+  "affected_subsystems": [
+    "structure",
+    "mechanical",
+    "thermal",
+    "power"
+  ],
+  "go_nogo_impact": "NO_GO",
+  "confidence_delta": -25
+}

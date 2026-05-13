@@ -1,0 +1,146 @@
+{
+  "change_summary": "Remove the optical subsystem (telescope)",
+  "geometry_changes": [
+    {
+      "operation": "remove",
+      "part_id": "optical_tube",
+      "subsystem": "optical",
+      "description": "Optical telescope tube removed"
+    },
+    {
+      "operation": "remove",
+      "part_id": "thermal_panel",
+      "subsystem": "thermal",
+      "description": "Thermal control panel removed"
+    }
+  ],
+  "cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "critical",
+      "subsystem": "optical",
+      "requirement": "L1-OPT-001",
+      "title": "Loss of optical resolution requirement compliance",
+      "description": "Removing the telescope tube will eliminate the primary imaging capability, causing non-compliance with GSD \u2264 1.5m at nadir.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "critical",
+      "subsystem": "thermal",
+      "requirement": "L1-THM-001",
+      "title": "Thermal control system failure",
+      "description": "The thermal panel is removed, which will cause the optical bench temperature to exceed allowable \u0394T limits across orbital cycles.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "major",
+      "subsystem": "mechanical",
+      "requirement": null,
+      "title": "Structural integrity compromised",
+      "description": "The removal of the optical subsystem will alter the structural balance and potentially affect mechanical constraints such as natural frequency and vibration response.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "major",
+      "subsystem": "startracker",
+      "requirement": null,
+      "title": "Star tracker alignment issues",
+      "description": "Without the optical subsystem, the star tracker's alignment and calibration will be compromised, affecting pointing accuracy.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-005",
+      "severity": "major",
+      "subsystem": "dataproc",
+      "requirement": null,
+      "title": "Data processing pipeline invalidation",
+      "description": "The removal of the optical subsystem will invalidate the data processing pipeline, which relies on image data from the telescope.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "open_non_conformance_reports": [
+    {
+      "id": "NCR-2024-031",
+      "severity": "major",
+      "requirement": "L1-THM-001",
+      "owner": "Thermal team",
+      "opened_date": "2024-11-15"
+    },
+    {
+      "id": "NCR-2024-038",
+      "severity": "minor",
+      "requirement": "L1-DPR-001",
+      "owner": "Data processing team",
+      "opened_date": "2024-11-12"
+    },
+    {
+      "id": "NCR-2024-041",
+      "severity": "major",
+      "requirement": "L1-MEC-003",
+      "owner": "AIT team",
+      "opened_date": "2024-12-02"
+    }
+  ],
+  "ecss_open_validation_items": [
+    {
+      "id": "THM-V-001",
+      "activity": "Thermal balance test to validate TMM",
+      "status": "open"
+    },
+    {
+      "id": "THM-V-002",
+      "activity": "Thermal vacuum test at qualification margins (4 cycles min)",
+      "status": "open"
+    },
+    {
+      "id": "MEC-V-004",
+      "activity": "Shock test per launcher SRS ICD",
+      "status": "open"
+    },
+    {
+      "id": "STR-V-003",
+      "activity": "Acoustic test at qualification level +3dB",
+      "status": "pending"
+    },
+    {
+      "id": "DPR-V-001",
+      "activity": "On-board compression algorithm validation",
+      "status": "open"
+    }
+  ],
+  "system_constraints": [
+    {
+      "constraint_type": "mass_budget",
+      "budget": "35.0 kg total",
+      "current_usage": "34.2 kg",
+      "margin": "0.8 kg"
+    },
+    {
+      "constraint_type": "power_budget_imaging",
+      "budget": "180W max",
+      "current_peak": "162W",
+      "margin": "18W"
+    },
+    {
+      "constraint_type": "thermal_delta_t_limit",
+      "limit": "15\u00b0C",
+      "current_value": "14.8\u00b0C",
+      "margin": "0.2\u00b0C [CRITICAL]"
+    },
+    {
+      "constraint_type": "first_natural_frequency",
+      "minimum_required": "80 Hz min",
+      "current_value": "108 Hz",
+      "margin": "28 Hz"
+    },
+    {
+      "constraint_type": "volume_envelope",
+      "maximum_allowed_volume": "platform ICD defines max 0.10 m\u00b3",
+      "current_usage": "0.084 m\u00b3",
+      "margin": "0.016 m\u00b3"
+    }
+  ]
+}

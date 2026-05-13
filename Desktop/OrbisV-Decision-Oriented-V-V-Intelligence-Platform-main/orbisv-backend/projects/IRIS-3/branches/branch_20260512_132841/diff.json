@@ -1,0 +1,54 @@
+{
+  "subsystems": {},
+  "decision_before": "GO_WITH_CONSTRAINTS",
+  "decision_after": "GO_WITH_CONSTRAINTS",
+  "confidence_before": 78,
+  "confidence_after": 78,
+  "new_cascade_issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "major",
+      "subsystem": "solar",
+      "requirement": "L1-PWR-001",
+      "title": "Power margin reduction",
+      "description": "Removing the right solar panel reduces power generation capacity, potentially exceeding peak power consumption limits during imaging mode.",
+      "type": "constraint_violation"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "minor",
+      "subsystem": "structure",
+      "requirement": null,
+      "title": "Mass reduction",
+      "description": "Removing the right solar panel reduces total payload mass, potentially affecting overall structural dynamics and compliance with mechanical requirements.",
+      "type": "reanalysis_required"
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "minor",
+      "subsystem": "thermal",
+      "requirement": null,
+      "title": "Thermal balance impact",
+      "description": "Removing the right solar panel may alter thermal distribution and affect temperature stability across orbital cycles, potentially impacting thermal requirements.",
+      "type": "reanalysis_required"
+    }
+  ],
+  "new_missing_tests": [
+    {
+      "ecss_standard": "ECSS-E-ST-31C",
+      "clause": "\u00a75.4",
+      "activity": "Thermal balance test to validate TMM with modified solar panel configuration",
+      "reason": "Removing the right solar panel affects thermal distribution and requires revalidation of thermal models."
+    },
+    {
+      "ecss_standard": "ECSS-E-ST-32C Rev.1",
+      "clause": "\u00a79",
+      "activity": "Shock test per launcher SRS ICD with modified payload configuration",
+      "reason": "Removing the right solar panel changes structural dynamics and requires revalidation of shock response."
+    }
+  ],
+  "affected_requirements": [
+    "L1-PWR-001",
+    "L1-MAS-001"
+  ]
+}

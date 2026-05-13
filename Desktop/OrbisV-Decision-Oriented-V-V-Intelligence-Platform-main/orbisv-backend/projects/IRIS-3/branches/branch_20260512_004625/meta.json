@@ -1,0 +1,13 @@
+{
+  "branch_id": "branch_20260512_004625",
+  "project_id": "IRIS-3",
+  "base_version": "main-v1.0",
+  "change_request": "allunga la struttura rettangolare di base facendola piu lunga ma mantenendo lo stesso materiale\n",
+  "author": "user",
+  "created_at": "2026-05-12T00:46:25.864183",
+  "go_nogo_impact": "NO_GO",
+  "confidence_before": 78,
+  "confidence_after": 43,
+  "issues_count": 4,
+  "missing_tests_count": 2
+}
